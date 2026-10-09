@@ -196,3 +196,49 @@ print("Training prediction max:", np.max(y_poly_pred))
 
 print("Outside prediction min:", np.min(y_poly_test[outside]))
 print("Outside prediction max:", np.max(y_poly_test[outside]))
+
+
+
+# Experiment 4: Compare high polynomial degrees
+
+degrees = [5, 7, 9, 11, 13, 27]
+
+for degree in degrees:
+    # Create polynomial features for this degree
+    poly_test = PolynomialFeatures(
+        degree=degree,
+        include_bias=False
+    )
+
+    X_train_poly = poly_test.fit_transform(x.reshape(-1, 1))
+    X_test_poly = poly_test.transform(x_test.reshape(-1, 1))
+
+    # Train a fresh model for this degree
+    model_test = LinearRegression()
+    model_test.fit(X_train_poly, y)
+
+    # Calculate training and extrapolation predictions
+    train_pred = model_test.predict(X_train_poly)
+    test_pred = model_test.predict(X_test_poly)
+
+    # Measure both errors
+    train_mse = mean_squared_error(y, train_pred)
+    extrapolation_mse = mean_squared_error(
+        y_test[outside],
+        test_pred[outside]
+    )
+
+    print(f"\nDegree: {degree}")
+    print(f"Training MSE: {train_mse:.6e}")
+    print(f"Extrapolation MSE: {extrapolation_mse:.6e}")
+
+
+# Experiment 5: Investigating high-degree feature scales
+
+for degree in [3, 11, 13, 27]:
+    poly = PolynomialFeatures(degree=degree, include_bias=False)
+    X_poly = poly.fit_transform(x.reshape(-1, 1))
+
+    print(f"\nDegree: {degree}")
+    print("Smallest feature maximum:", np.min(np.max(np.abs(X_poly), axis=0)))
+    print("Largest feature maximum:", np.max(np.max(np.abs(X_poly), axis=0)))
