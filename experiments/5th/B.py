@@ -25,7 +25,7 @@ for degree in [11, 13]:
 '''
     What we noticed is that the rank has decreased. I do not have enough knowledge here as I'm doing this from scratch
     and I am not able to find any clear documentation stating this exact probelm. I might be first to find out. Nope. Similar cases were discovered before just not exact maybe 
-    or I(Gemini & ChatGPT) just didnt search enough.
+    or I just didnt search enough.
     This is the stopping point in this program. I will be studying about how everything is calculated in depth.
     And, in next part of 5th experiment we might be able to find out the reason.
 '''

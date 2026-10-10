@@ -1,0 +1,10 @@
+Enter x in radians (or q to quit): 27
+Polynomial prediction: 0.956375922514134
+NumPy sin(x):          0.956375928404503
+Absolute error:        5.890369e-09
+
+Enter x in radians (or q to quit): 165
+Polynomial prediction: 2.576922139628e+43
+NumPy sin(x):          0.997797279449891
+Absolute error:        2.576922e+43
+Note: this input is outside the training interval.
