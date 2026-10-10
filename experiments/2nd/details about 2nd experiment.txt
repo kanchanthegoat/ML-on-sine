@@ -1,0 +1,2 @@
+All the details about this exp is  provided in comments of main.py
+This experiment did not add anything. Because addition of second power didnt became useless. because of symmetric nature of sinex.

@@ -149,10 +149,10 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-# Keep only test points outside the training range
+# Keeping only test points outside the training range
 outside = (x_test < -np.pi) | (x_test > np.pi)
 
-# Calculate MSE only on those outside points
+# Calculating MSE only on those outside points
 outside_mse = mean_squared_error(
     y_test[outside],
     y_poly_test[outside]
